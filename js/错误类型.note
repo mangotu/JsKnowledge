@@ -1,0 +1,6 @@
+#### 1 EvalError eval() 使用与定义不一致
+#### 2 RangeError 数值越界
+#### 3 ReferenceError 非法或不能识别的引用数值
+#### 4 SyntaxError 发生语法解析错误
+#### 5 TypeError 操作类型错误
+#### 6 URIError url处理不当

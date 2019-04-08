@@ -1,0 +1,40 @@
+### 先看题
+    funtion fn(a){
+        console.log(a)
+        var a = 1;
+        console.log(a)
+        function a(){}
+        console.log(a)
+    }
+    fn(1)
+
+ # 一.预编译发生在函数执行的前一刻
+ 
+    1.创建AO对象 (Activation Object)(执行期上下文)
+        //AO的作用就是函数执行的作用域
+        AO = {}
+    2.找对应的形参和变量声明,并赋值 undefined
+        AO = {
+            a: undefined
+        }
+    3.将实参值和形参值统一
+        AO = {
+            a: 1
+        }
+    4. 在函数体里面找函数声明，值赋予函数体
+        AO = {
+            a: function a(){}
+        }
+        
+      fn执行结果：
+        funtion fn(a){
+            console.log(a) // function a(){}
+            var a = 1;
+            console.log(a) // 1
+            function a(){}
+            console.log(a) // 1
+        }
+        fn(1)
+        
+# 全局的跟函数执行同一个道理
+    区别是 全局的是 全局执行上下文 => GO( Global Object )对象
