@@ -23,7 +23,7 @@ Promise.prototype.then = function(onfulfilled,onrejected){
 	}
 
 	if(this.status === "rejected"){ // 失败状态
-		onfulfilled(this.reason);
+		onrejected(this.reason);
 	}
 
 };
