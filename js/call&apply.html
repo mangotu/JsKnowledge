@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>call 和 apply</h1>
+    <p>
+        call的特点 <br>
+            1.改变当前函数的this指向<br>
+            2.让当前函数指行
+    </p>
+</body>
+</html>
+<script>
+    // call
+    function fn1(){ 
+        console.log(this,this.a)
+    }
+    var foo = {
+        a:1
+    }
+
+
+Function.prototype.call  = function (context){
+    //context this指向
+    var context = context ? Object(context) : window; //如果没有传入参数 默认 this 指向 window
+        context.fn = this;
+    var arg = [] // 存储 arguments 
+    for(var i = 1 ; i<arguments.length ; i++)
+    {
+        arg.push('arguments['+ i +']');
+    }
+    var result = eval('context.fn('+ arg +')');    
+        delete context.fn
+        return result;
+}
+
+fn1.call(foo,1,2)
+</script>
