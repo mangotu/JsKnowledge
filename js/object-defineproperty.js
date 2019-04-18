@@ -78,5 +78,18 @@ console.log(obj)
 
      observe(data);
      data.name = "asdfa";
+     //vue 不支持数组操作的方法 所有重写了 vue的 数组操作方法
+
+     let methods = ["push","pop","shift","unshift","sort","reverse","slice"]
+
+    methods.forEach(method=>{
+        let oldMethod = Array.prototype[method];
+        Array.prototype[method] = function(){
+
+            update();
+            oldMethod.call(this,...arguments);
+        }
+
+    })
 
  }
